@@ -18,7 +18,7 @@ export default function RegistrationGuideScreen() {
           Step 1: Press the text field above the button: "Scan NFC Tag and Save"
         </Text>
         <Text style={globalStyles.stepText}>
-          Step 2: Write the, regulatory determined, maximum number of washes
+          Step 2: Write the, regulatory determined, maximum number of washes and product number
         </Text>
         <Text style={globalStyles.stepText}>
           Step 3: Press the button: "Scan NFC Tag and Save"

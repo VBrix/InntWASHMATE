@@ -143,7 +143,7 @@ export const Dashboard = () => {
           endDate={new Date()}
           numDays={90}
           showOutOfRangeDays={true}
-          width={Dimensions.get("window").width - 50} // Adjusted width
+          width={Dimensions.get("window").width - 70} // Adjusted width
           height={220}
           chartConfig={{
             backgroundGradientFrom: colors.softIvory,
