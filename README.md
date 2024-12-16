@@ -16,7 +16,7 @@ Da appen implementere npm pakken: react-native-nfc-manager, som er et brugerdefi
 ### Demo video
 
 - Da der naturligt er en del forudsætninger til kørsel af dette projekt har vi lavet en mere dybdegående demo video, som gennemgår appen.
-- Link til YT video:
+- Link til YT video: https://www.youtube.com/watch?v=5MfgnWfRNpw
 
 ### Installation
 
