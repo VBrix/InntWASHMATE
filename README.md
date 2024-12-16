@@ -41,7 +41,7 @@ Da appen implementere npm pakken: react-native-nfc-manager, som er et brugerdefi
 ### Kørsel på en Fysisk Enhed
 
 1. Installer Expo Go appen fra Google Play Store på din Android-enhed.
-3. Installer APK filen (ligger i mappen apk fil i InntWASHMATE mappen) på Android enheden - sørg for, at Developer Mode og USB Debugging er aktiveret på din Android-enhed
+3. Installer APK filen (apk filen er komprimerert i en .7z mappe og ligger under apk fil i InntWASHMATE mappen) på Android enheden - sørg for, at Developer Mode og USB Debugging er aktiveret på din Android-enhed
 4. Åben appen (ikke expo go, men den installerede app fra APK filen, den hedder InntWASHMATE) og log på med din expo bruger og luk appen helt ned efter
 5. I root mappen, kør:
     ```sh
