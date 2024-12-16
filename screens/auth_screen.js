@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image } from "react-native";
-import { colors } from "../styles/globalStyles"; // Import colors
+import { colors } from "../styles/globalStyles"; 
 
 import LogInComponent from "./login_screen";
 import SignUpComponent from "./signup_screen";
@@ -9,14 +9,15 @@ const Tab = createBottomTabNavigator();
 
 // Navigator for redirecting
 export default function AuthScreen() {
+  // To show uniform background color 
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { backgroundColor: colors.softIvory }, // Set background color
-        tabBarActiveTintColor: colors.slateBlue, // Active tab color
-        tabBarInactiveTintColor: colors.refinedCharcoalGray, // Inactive tab color
-        headerStyle: { backgroundColor: colors.softIvory }, // Set header background color
-        headerTintColor: colors.refinedCharcoalGray, // Set header text color
+        tabBarStyle: { backgroundColor: colors.softIvory }, 
+        tabBarActiveTintColor: colors.slateBlue, 
+        tabBarInactiveTintColor: colors.refinedCharcoalGray, 
+        headerStyle: { backgroundColor: colors.softIvory }, 
+        headerTintColor: colors.refinedCharcoalGray, 
       }}
     >
       <Tab.Screen

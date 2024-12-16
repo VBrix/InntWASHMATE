@@ -1,26 +1,24 @@
 import "react-native-gesture-handler";
 import { enableScreens } from "react-native-screens";
+// Render screens as its a EAS build
 enableScreens();
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { getApps, initializeApp } from "firebase/app";
-import {
-  getAuth,
-  initializeAuth,
-  onAuthStateChanged,
-  getReactNativePersistence,
-} from "firebase/auth";
+import { getAuth, initializeAuth, onAuthStateChanged, getReactNativePersistence } from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
-import { colors } from "./styles/globalStyles"; // Import colors
 
+// imprt screens and styles
 import HomepageScreen from "./screens/homepage_screen";
 import RegistrationGuideScreen from "./screens/registrationGuide_screen";
 import AuthScreen from "./screens/auth_screen";
 import AdminScreen from "./screens/admin_screen";
 import KontrollørScreen from "./screens/kontrollør_screen";
 import RengøringsansvarligScreen from "./screens/rengøringsmedarbejder_screen";
+import { colors } from "./styles/globalStyles"; 
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBfp-lh5IiQWONkrK-iG4j8rTRmf4AChb0",
@@ -60,14 +58,14 @@ export default function App() {
   const StackNavigation = () => (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: colors.softIvory }, // Set header background color
-        headerTintColor: colors.refinedCharcoalGray, // Set header text color
+        headerStyle: { backgroundColor: colors.softIvory }, 
+        headerTintColor: colors.refinedCharcoalGray, 
       }}
     >
       <Stack.Screen 
         name='Homepage' 
         component={HomepageScreen}
-        options={{ headerShown: false }} // Hide header
+        options={{ headerShown: false }} 
       />
       <Stack.Screen
         name='Registration Guide'

@@ -7,7 +7,7 @@ export default function RegistrationGuideScreen() {
   return (
     <ScrollView
       contentContainerStyle={[globalStyles.scrollContainer, { paddingTop: 60, backgroundColor: colors.softIvory }]}
-      style={{ backgroundColor: colors.softIvory }} // Ensure the entire ScrollView has the background color
+      style={{ backgroundColor: colors.softIvory }} 
     >
       <View style={[globalStyles.guideContainer, { backgroundColor: colors.softIvory }]}>
         <Text style={globalStyles.titleText}>

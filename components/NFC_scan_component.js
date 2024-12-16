@@ -19,7 +19,7 @@ export const NfcScanComponent = async (onTagScanned) => {
     // Normalize tag id 
     const tagId = tag.id.toUpperCase().trim();
     if (onTagScanned && typeof onTagScanned === "function") {
-      await onTagScanned(tagId); 
+      await onTagScanned(tagId);
     }
   } catch (error) {
     console.warn("NFC scan failed:", error);

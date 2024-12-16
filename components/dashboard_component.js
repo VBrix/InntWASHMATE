@@ -72,7 +72,7 @@ export const Dashboard = () => {
             date,
             count: dateCounts[date],
           }));
-
+          console.log(contributionData);
           setContributions(contributionData);
         }
       });
@@ -107,7 +107,7 @@ export const Dashboard = () => {
       legendFontSize: 15,
     },
     {
-      name: "Partial Use",
+      name: "Partial",
       population: partialCount,
       color: colors.yellow,
       legendFontColor: "#7F7F7F",
@@ -121,8 +121,8 @@ export const Dashboard = () => {
         <Text style={globalStyles.titleText}>Status of registered items</Text>
         <PieChart
           data={chartData}
-          width={Dimensions.get("window").width - 100} // Adjusted width to make it smaller
-          height={180} // Adjusted height to make it smaller
+          width={Dimensions.get("window").width - 100} 
+          height={180} 
           chartConfig={{
             backgroundGradientFrom: "#fff",
             backgroundGradientTo: "#fff",
@@ -141,9 +141,9 @@ export const Dashboard = () => {
         <ContributionGraph
           values={contributions}
           endDate={new Date()}
-          numDays={90}
+          numDays={70}
           showOutOfRangeDays={true}
-          width={Dimensions.get("window").width - 70} // Adjusted width
+          width={Dimensions.get("window").width - 70} 
           height={220}
           chartConfig={{
             backgroundGradientFrom: colors.softIvory,
@@ -153,9 +153,10 @@ export const Dashboard = () => {
             strokeWidth: 2,
           }}
           backgroundColor={colors.softIvory}
-          style={{ alignSelf: "center" }} // Center the ContributionGraph
+          style={{ alignSelf: "center" }} 
           // Used to display number of registrations on press of the given day
-          onDayPress={(value) => {
+          onDayPress={({value}) => {
+            console.log(value);
             if (value?.date) {
               const formattedDate = moment(value.date).format("YYYY-MM-DD");
               setSelectedDay({
@@ -168,9 +169,7 @@ export const Dashboard = () => {
       </View>
 
       {selectedDay && (
-        <View
-          style={[globalStyles.dashboardChart, { backgroundColor: "transparent" }]}
-        >
+        <View style={[globalStyles.dashboardChart, { backgroundColor: colors.lightGray }]}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             Date: {selectedDay.date}
           </Text>

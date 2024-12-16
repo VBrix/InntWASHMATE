@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, ScrollView } from "react-native";
-import { globalStyles } from "../styles/globalStyles";
+import { globalStyles, colors } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth } from "firebase/auth";
 
@@ -22,7 +22,7 @@ export default function IndkøbsansvarligScreen() {
   return (
     <ScrollView contentContainerStyle={[globalStyles.container]}>
       <Text style={[globalStyles.welcomeText]}>
-         Welcome to <Text style={{ color: "rgb(132, 189, 57)" }}>WASH</Text><Text style={{ color: "#000" }}>MATE</Text>, {displayName}!
+         Welcome to <Text style={{ color: colors.freshGreen }}>WASH</Text><Text style={{ color: "#000" }}>MATE</Text>, {displayName}!
       </Text>
       <Dashboard/>
     </ScrollView>

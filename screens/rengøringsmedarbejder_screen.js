@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity, Animated } from "react-native";
-import { globalStyles, colors } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth } from "firebase/auth";
 
@@ -8,12 +7,16 @@ import { getAuth } from "firebase/auth";
 import { LogOut } from "../components/log_out_component";
 import { ScanWashComponent } from "../components/scan_wash_component";
 import { ScanAnimationComponent } from "../components/scan_animation_component";
+import { globalStyles, colors } from "../styles/globalStyles";
+
 
 export default function RengøringsansvarligScreen() {
   const navigation = useNavigation();
   const [displayName, setDisplayName] = useState("");
-  const [buttonColor, setButtonColor] = useState(colors.slateBlue); // Default color
+  const [buttonColor, setButtonColor] = useState(colors.slateBlue); 
+  const [displayScanStatus, setDisplayScanStatus] = useState(false);
 
+  // Get logged in user
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
@@ -22,20 +25,24 @@ export default function RengøringsansvarligScreen() {
     }
   }, []);
 
+  // Change color and display if scanning is in progress
   const handleScan = async () => {
+    setDisplayScanStatus(true);
     const colorStatus = await ScanWashComponent();
-    console.log(colorStatus); // Log colorStatus
+    setDisplayScanStatus(false);
     setButtonColor(colorStatus);
-    setTimeout(() => setButtonColor(colors.slateBlue), 5000); // Reset after 5 seconds
+    setTimeout(() => setButtonColor(colors.slateBlue), 3000); 
   };
 
   return (
     <View style={[globalStyles.container, { padding: 20 }]}>
       <Text style={[globalStyles.welcomeText, { marginBottom: 20 }]}>
-         Welcome to <Text style={{ color: colors.freshGreen }}>WASH</Text><Text style={{ color: "#000" }}>MATE</Text>, {displayName}!
+        Welcome to <Text style={{ color: colors.freshGreen }}>WASH</Text>
+        <Text style={{ color: "#000" }}>MATE</Text>, {displayName}!
       </Text>
 
-      {/* View type for live animation*/}
+      {displayScanStatus && <Text style ={globalStyles.titleText}> Scanning...</Text>}
+      
       <ScanAnimationComponent colorStatus={buttonColor} onPress={handleScan}>
         <Text style={globalStyles.touchableText}>Scan Wash</Text>
       </ScanAnimationComponent>

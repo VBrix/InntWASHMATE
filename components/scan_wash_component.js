@@ -1,10 +1,10 @@
 import { Alert, Vibration } from "react-native";
 import { getDatabase, ref, get, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
+
 import { NfcScanComponent } from "./NFC_scan_component";
 import { colors } from "../styles/globalStyles";
-import { sendMail } from './send_mail_component';
-
+import { sendMail } from "./send_mail_component";
 
 export const ScanWashComponent = async () => {
   const auth = getAuth();
@@ -35,7 +35,7 @@ export const ScanWashComponent = async () => {
 
     if (found) {
       const registration = registrations[found];
-
+      Vibration.vibrate(500);
       // Check if the owner is empty and assign the current users company
       if (registration.Owner === "") {
         const currentUser = auth.currentUser;
@@ -99,7 +99,10 @@ export const ScanWashComponent = async () => {
 
         // Send email notification
         const currentUser = auth.currentUser;
-        sendMail(currentUser.email, registration.ProductNumber, currentUser.displayName);
+        sendMail(
+          registration.ProductNumber,
+          currentUser.displayName
+        );
       } else {
         // else update the wash count and last wash date
         await update(ref(db, `registrations/${found}`), {

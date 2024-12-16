@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Animated, TouchableOpacity } from "react-native";
-import { globalStyles } from "../styles/globalStyles";
 
+import { colors, globalStyles } from "../styles/globalStyles";
+
+// Function to change color of touchable opacity when clicked
 export const ScanAnimationComponent = ({ colorStatus, onPress, children }) => {
   const backgroundColorAnim = useRef(new Animated.Value(0)).current;
 
@@ -17,15 +19,15 @@ export const ScanAnimationComponent = ({ colorStatus, onPress, children }) => {
           duration: 500,
           useNativeDriver: false,
         }).start();
-      }, 3000); // Reset after 5 seconds
+      }, 3000); 
     });
   }, [colorStatus]);
 
   const backgroundColor = backgroundColorAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ["rgba(94, 127, 164, 1)", colorStatus], // From default color to the new color
+    outputRange: [colors.slateBlue, colorStatus],
   });
-
+  // Returning the TouchableOpcaity imported to scan status and wash
   return (
     <Animated.View style={[globalStyles.scanTouchable, { marginBottom: 20 }, { backgroundColor }]}>
       <TouchableOpacity onPress={onPress} style={{ padding: 20, borderRadius: 15 }}>

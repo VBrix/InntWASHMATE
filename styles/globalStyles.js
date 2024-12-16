@@ -1,63 +1,60 @@
 import { StyleSheet } from "react-native";
 
 export const colors = {
-  freshGreen: "rgb(132, 189, 57)", // Fresh Green
-  softIvory: "rgb(242, 236, 220)", // Soft Sand Beige
-  refinedCharcoalGray: "rgb(47, 47, 47)", // Refined Charcoal Gray
-  slateBlue: "rgb(94, 127, 164)", // Slate Blue
-  elegantGold: "rgb(189, 175, 100)", // Elegant Gold
-  lightGray: "rgb(201, 199, 180)", // Light Gray
-  yellow: "rgb(245, 203, 66)", // Yellow
-  red: "rgb(199, 67, 50)", // Red
-
+  freshGreen: "rgb(132, 189, 57)",
+  softIvory: "rgb(242, 236, 220)",
+  refinedCharcoalGray: "rgb(47, 47, 47)",
+  slateBlue: "rgb(94, 127, 164)",
+  elegantGold: "rgb(189, 175, 100)",
+  lightGray: "rgb(201, 199, 180)",
+  yellow: "rgb(245, 203, 66)",
+  red: "rgb(199, 67, 50)",
 };
 
 export const globalStyles = StyleSheet.create({
-  // Containers
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 5,
-    backgroundColor: colors.softIvory, // Updated background color
+    backgroundColor: colors.softIvory,
   },
   secondaryContainer: {
     flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
-    backgroundColor: colors.softIvory, // Updated background color
+    backgroundColor: colors.softIvory,
   },
   scrollContainer: {
     padding: 20,
     alignItems: "center",
-    backgroundColor: colors.softIvory, // Updated background color
+    backgroundColor: colors.softIvory,
   },
   separator: {
     height: 1,
-    backgroundColor: colors.refinedCharcoalGray, // Updated separator color
+    backgroundColor: colors.refinedCharcoalGray,
     marginVertical: 10,
   },
-
-  // Typography
   titleText: {
     fontSize: 22,
     fontWeight: "600",
-    color: colors.refinedCharcoalGray, // Updated text color
+    color: colors.refinedCharcoalGray,
     marginBottom: 20,
+    textAlign: "center",
   },
   welcomeText: {
-    fontSize: 25, // Increased font size
-    fontWeight: "600", // Increased font weight
-    color: colors.refinedCharcoalGray, // Updated text color
+    fontSize: 25,
+    fontWeight: "600",
+    color: colors.refinedCharcoalGray,
     marginBottom: 20,
     marginTop: 40,
-    textAlign: "center", // Centered text
-    textShadowOffset: { width: 1, height: 1 }, // Added text shadow offset
-    textShadowRadius: 2, // Added text shadow radius
+    textAlign: "center",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   },
   touchableText: {
-    color: colors.softIvory, // Updated touchable text color
+    color: colors.softIvory,
     fontSize: 16,
     fontWeight: "500",
   },
@@ -66,99 +63,91 @@ export const globalStyles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 20,
-    color: colors.refinedCharcoalGray, // Updated header color
+    color: colors.refinedCharcoalGray,
   },
   error: {
     color: "red",
     marginBottom: 20,
   },
-
   dashboardChart: {
+    zIndex: 10,
     marginVertical: 20,
     alignItems: "center",
-    backgroundColor: colors.lightGray, // Updated background color
+    backgroundColor: colors.lightGray,
     borderRadius: 12,
     padding: 15,
-    shadowColor: colors.lightGray, // Updated shadow color
+    shadowColor: colors.lightGray,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
-
-  // Buttons and touchable elements
   touchable: {
-    backgroundColor: colors.slateBlue, // Updated button color
-    paddingVertical: 20, // Increased padding
-    paddingHorizontal: 40, // Increased padding
+    backgroundColor: colors.slateBlue,
+    paddingVertical: 20,
+    paddingHorizontal: 40,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    shadowColor: colors.refinedCharcoalGray, // Updated shadow color
+    shadowColor: colors.refinedCharcoalGray,
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
-    width: 250, // Increased width
+    width: 250,
   },
-
   scanTouchable: {
-    backgroundColor: colors.slateBlue, // Updated button color
-    paddingVertical: 20, // Increased padding
-    paddingHorizontal: 40, // Increased padding
+    backgroundColor: colors.slateBlue,
+    paddingVertical: 20,
+    paddingHorizontal: 40,
     borderRadius: 250 / 2,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    shadowColor: colors.refinedCharcoalGray, // Updated shadow color
+    shadowColor: colors.refinedCharcoalGray,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    width: 250, // Increased width
-    height: 250, // Added height
+    width: 250,
+    height: 250,
   },
-
   logoutTouchable: {
-    backgroundColor: colors.slateBlue, // Updated button color
+    backgroundColor: colors.slateBlue,
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
-    shadowColor: colors.refinedCharcoalGray, // Updated shadow color
+    shadowColor: colors.refinedCharcoalGray,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    width: 250, // Added fixed width
+    width: 250,
   },
   button: {
     marginTop: 20,
-    backgroundColor: colors.slateBlue, // Updated button color
+    backgroundColor: colors.slateBlue,
     borderRadius: 8,
     padding: 10,
   },
-
-  // Input fields
   input: {
     height: 50,
-    width: 250, // Adjusted width
-    borderColor: colors.refinedCharcoalGray, // Updated border color
+    width: 250,
+    borderColor: colors.refinedCharcoalGray,
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 20,
-    backgroundColor: colors.softIvory, // Updated background color
-    fontSize: 16, // Changed font size
-    color: colors.refinedCharcoalGray, // Changed text color
-    shadowColor: colors.refinedCharcoalGray, // Added shadow color
-    shadowOffset: { width: 0, height: 1 }, // Reduced shadow offset
-    shadowOpacity: 0.05, // Reduced shadow opacity
-    shadowRadius: 2, // Reduced shadow radius
-    elevation: 1, // Reduced elevation for Android shadow
+    backgroundColor: colors.softIvory,
+    fontSize: 16,
+    color: colors.refinedCharcoalGray,
+    shadowColor: colors.refinedCharcoalGray,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
   },
-
-  // Dropdown and picker
   pickerContainer: {
     width: 250,
     height: 50,
@@ -167,11 +156,9 @@ export const globalStyles = StyleSheet.create({
   dropdown: {
     position: "absolute",
     width: 250,
-    backgroundColor: colors.softIvory, // Updated background color
+    backgroundColor: colors.softIvory,
     borderRadius: 8,
   },
-
-  // Guide styles
   guideContainer: {
     backgroundColor: colors.lightGray,
     padding: 20,

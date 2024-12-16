@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { View, Alert, TouchableOpacity, Text } from "react-native";
 import { TextInput } from "react-native-paper";
-import { getDatabase, ref, push, get, query, orderByChild, equalTo } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  push,
+  get,
+  query,
+  orderByChild,
+  equalTo,
+} from "firebase/database";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import { globalStyles, colors } from "../styles/globalStyles";
 
@@ -11,7 +19,7 @@ console.log("NFC Manager started");
 export default function RegistrationComponent() {
   const db = getDatabase();
 
-  // Define object of registration 
+  // Define object of registration
   const initialState = {
     id: "",
     createDate: "",
@@ -26,6 +34,7 @@ export default function RegistrationComponent() {
   const [newRegistration, setNewRegistration] = useState(initialState);
   const [nfcSupported, setNfcSupported] = useState(true);
   const [nfcRequesting, setNfcRequesting] = useState(false);
+  const [displayScanStatus, setDisplayScanStatus] = useState(false);
 
   // Check if device supports NFC technology
   useEffect(() => {
@@ -41,7 +50,6 @@ export default function RegistrationComponent() {
     }
 
     initNFC();
-
     return () => {
       (async () => {
         try {
@@ -52,7 +60,7 @@ export default function RegistrationComponent() {
       })();
     };
   }, []);
-  
+
   // Function to update registration based on input
   const handleInputChange = (name, value) => {
     setNewRegistration((prevState) => ({
@@ -78,13 +86,15 @@ export default function RegistrationComponent() {
         console.log("NFC request already in progress");
         return;
       }
-      // Starts listening for NFC tags 
+      // Starts listening for NFC tags
       setNfcRequesting(true);
+      setDisplayScanStatus(true);
 
       await NfcManager.requestTechnology(NfcTech.Ndef);
       const tag = await NfcManager.getTag();
 
       if (!tag || !tag.id) {
+        setDisplayScanStatus(false);
         Alert.alert("No NFC Tag detected. Try again.");
         console.log("No NFC Tag detected");
         return;
@@ -97,9 +107,8 @@ export default function RegistrationComponent() {
       // Check if tag has been registered before
       const alreadyRegistered = await checkIfRegistered(tagId);
       if (alreadyRegistered) {
-        Alert.alert(
-          "This tag has been scanned before and cannot be registered again."
-        );
+        setDisplayScanStatus(false);
+        Alert.alert("This tag has been scanned before and cannot be registered again.");
         console.log("Tag already registered");
         return;
       }
@@ -111,8 +120,10 @@ export default function RegistrationComponent() {
         createDate: new Date().toISOString(),
       }));
 
+      setDisplayScanStatus(false);
       await handleSavedRegistration(tagId);
     } catch (ex) {
+      setDisplayScanStatus(false);
       console.warn("NFC scan failed", ex);
       Alert.alert("NFC Scan failed. Please try again.");
     } finally {
@@ -174,22 +185,25 @@ export default function RegistrationComponent() {
   return (
     <View style={[globalStyles.container, { alignItems: "stretch" }]}>
       <TextInput
-        label="Max Wash Count"
+        label='Max Wash Count'
         value={newRegistration.MaxWashCount}
         onChangeText={(text) => handleInputChange("MaxWashCount", text)}
         style={globalStyles.input}
-        keyboardType="numeric"
+        keyboardType='numeric'
         outlineColor={colors.inputBorder}
       />
 
       <TextInput
-        label="Product Number"
+        label='Product Number'
         value={newRegistration.ProductNumber}
         onChangeText={(text) => handleInputChange("ProductNumber", text)}
         style={globalStyles.input}
-        keyboardType="numeric"
+        keyboardType='numeric'
         outlineColor={colors.inputBorder}
       />
+      {displayScanStatus && (
+        <Text style={globalStyles.titleText}> Scanning...</Text>
+      )}
 
       <TouchableOpacity
         style={[globalStyles.scanTouchable, { marginBottom: 20 }]}

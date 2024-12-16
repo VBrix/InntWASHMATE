@@ -9,8 +9,8 @@ import IndkøbsansvarligScreen from "./indkøbsansvarlig_screen";
 import KontrollørScreen from "./kontrollør_screen";
 import RengøringsansvarligScreen from "./rengøringsmedarbejder_screen";
 
-// Export screen
-export default function HomepageScreen({ navigation }) {
+// Export screen based on usertype
+export default function HomepageScreen() {
   const [userData, setUserData] = useState(null);
   const [user, setUser] = useState(null);
   let auth = getAuth();
