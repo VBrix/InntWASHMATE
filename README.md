@@ -61,9 +61,9 @@ Da appen implementere npm pakken: react-native-nfc-manager, som er et brugerdefi
     ```sh
 	export ANDROID_HOME=$HOME/Library/Android/sdk
 	export PATH=$PATH:$ANDROID_HOME/emulator
-    	export PATH=$PATH:$ANDROID_HOME/tools
-    	export PATH=$PATH:$ANDROID_HOME/tools/bin
-    	export PATH=$PATH:$ANDROID_HOME/platform-tools
+    export PATH=$PATH:$ANDROID_HOME/tools
+    export PATH=$PATH:$ANDROID_HOME/tools/bin
+    export PATH=$PATH:$ANDROID_HOME/platform-tools
     ```
  				
 ### Ressourcer jeg brugte til at sætte det op
